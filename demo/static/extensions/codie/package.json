@@ -2,7 +2,7 @@
 	"name": "codie",
 	"displayName": "Codie",
 	"description": "Codie extension",
-	"version": "0.0.5",
+	"version": "0.0.14",
 	"publisher": "btwiuse",
 	"private": true,
 	"license": "MIT",
@@ -89,7 +89,22 @@
 			{
 				"command": "workbench.action.remote.close2",
 				"category": "Codie",
-				"title": "workbench action remote close2 in json"
+				"title": "Log all registered commands"
+			},
+			{
+				"command": "workbench.action.remote.newWithInput",
+				"category": "Codie",
+				"title": "Connect remote authority"
+			},
+			{
+				"command": "workbench.action.remote.newWindowWithInput",
+				"category": "Codie",
+				"title": "Open remote authority in new window"
+			},
+			{
+				"command": "workbench.action.remote.closeCurrent",
+				"category": "Codie",
+				"title": "Disconnect remote authority"
 			}
 		],
 		"menus": {
@@ -97,6 +112,18 @@
 				{
 					"command": "workbench.action.remote.close2",
 					"group": "remote_10_vscode-remote-server_0_local@1"
+				},
+				{
+					"command": "workbench.action.remote.closeCurrent",
+					"group": "remote_10_vscode-remote-server_0_local@4"
+				},
+				{
+					"command": "workbench.action.remote.newWindowWithInput",
+					"group": "remote_10_vscode-remote-server_0_local@3"
+				},
+				{
+					"command": "workbench.action.remote.newWithInput",
+					"group": "remote_10_vscode-remote-server_0_local@2"
 				}
 			]
 		}

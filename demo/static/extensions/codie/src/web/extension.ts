@@ -100,6 +100,51 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 		  })
 	  })
   );
+  subscriptions.push(
+	vscode.commands.registerCommand("workbench.action.remote.closeCurrent", () => {
+		console.log("new window, noargs")
+		vscode.commands.executeCommand("vscode.newWindow")
+	})
+  );
+  subscriptions.push(
+	vscode.commands.registerCommand("workbench.action.remote.newWithInput", async () => {
+		// Prompt the user for the remote authority (e.g., "127.0.0.1:8080")
+		const remoteAuthority = await vscode.window.showInputBox({
+			placeHolder: 'Enter remote authority (e.g., 127.0.0.1:8080)',
+			prompt: 'Specify the remote authority for the new window',
+			value: '127.0.0.1:8080' // Default value
+		});
+
+		// Check if the user provided input
+		if (remoteAuthority) {
+            console.log(`Replacing window with remoteAuthority: ${remoteAuthority}`);
+            // Replace the current window with a new one
+            vscode.commands.executeCommand("vscode.newWindow", {
+                remoteAuthority: remoteAuthority,
+                reuseWindow: true // <-- This replaces the current window
+            });
+		}
+	})
+  );
+  subscriptions.push(
+	vscode.commands.registerCommand("workbench.action.remote.newWindowWithInput", async () => {
+		// Prompt the user for the remote authority (e.g., "127.0.0.1:8080")
+		const remoteAuthority = await vscode.window.showInputBox({
+			placeHolder: 'Enter remote authority (e.g., 127.0.0.1:8080)',
+			prompt: 'Specify the remote authority for the new window',
+			value: '127.0.0.1:8080' // Default value
+		});
+
+		// Check if the user provided input
+		if (remoteAuthority) {
+            console.log(`Opening window with remoteAuthority: ${remoteAuthority}`);
+            vscode.commands.executeCommand("vscode.newWindow", {
+                remoteAuthority: remoteAuthority,
+                reuseWindow: false
+            });
+		}
+	})
+  );
 	// register a command that is invoked when the status bar
 	// item is selected
 	const myCommandId = 'sample.showSelectionCount';
